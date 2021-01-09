@@ -5,7 +5,13 @@ void main() {
     home:IrakliCard()
   ));
 }
-class IrakliCard extends StatelessWidget {
+class IrakliCard extends StatefulWidget {
+  @override
+  _IrakliCardState createState() => _IrakliCardState();
+}
+
+class _IrakliCardState extends State<IrakliCard> {
+  int iraklilevel=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +21,17 @@ class IrakliCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[800],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            iraklilevel++;
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       body: Padding(
         padding:EdgeInsets.all(30.0),
@@ -64,7 +81,7 @@ class IrakliCard extends StatelessWidget {
               height: 10,
             ),
             Text(
-              '7',
+              '$iraklilevel',
               style: TextStyle(
                   color: Colors.pink,
                   fontWeight: FontWeight.w500,
